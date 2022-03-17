@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- These are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="gui" default="true"/>
+  <arg name="paused" default="true"/>
+  <arg name="use_sim_time" default="true"/>
+
+  <!-- Start the gazebo -->
+  <include file="$(find innfos_joint_description)/launch/innfos_joint_gazebo.launch">
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+  </include>
+
+  <!-- Start the RVIZ -->
+  <include file="$(find innfos_joint_description)/launch/innfos_joint_rviz.launch" />
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <include file="$(find innfos_joint_controllers)/launch/innfos_joint_controllers.launch"/>
+
+</launch>

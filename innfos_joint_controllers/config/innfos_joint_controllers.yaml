@@ -1,0 +1,32 @@
+innfos:
+  joint_state_controller:
+    type: "joint_state_controller/JointStateController"
+    publish_rate: 50
+    
+  effort_state_controller:
+    type: "innfos_joint_controllers/EffortStateController"
+    
+    state_type: "position"
+  
+    min_position: -1.74
+    max_position: 1.74
+    max_velocity: 1.2
+    max_effort: 5.0
+    
+    pos_pid: {p: 16.0, i: 0.0, d: 0.01}
+    vel_pid: {p: 13.5, i: 0.01, d: 0.0}
+
+  effort_controller:
+    type: "effort_controllers/JointPositionController"
+    joint: "innfos_joint"
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  impedance_controller:
+    type: "innfos_joint_controllers/ImpedanceController"
+  
+    min_position: -1.74
+    max_position: 1.74
+    max_velocity: 1.2
+    max_effort: 5.0
+    
+    imp_param: {M: 1.0, D: 0.5, K: 0.0}

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <arg name="controller" default="impedance_controller"/>
+
+  <rosparam command="load" file="$(find innfos_joint_controllers)/config/innfos_joint_controllers.yaml"/>
+
+  <node name="innfos_joint_controllers_spawner"
+          pkg="controller_manager"
+          type="spawner"
+          ns="innfos"
+          output="screen"
+          args="joint_state_controller
+                $(arg controller)"/>
+
+  <node name="config_dashboard" pkg="rqt_gui" type="rqt_gui" respawn="false" output="screen" args="--perspective-file $(find innfos_joint_controllers)/config/rqt/$(arg controller).perspective"/>
+
+</launch>

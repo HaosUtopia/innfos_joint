@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- These are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="gui" default="true"/>
+  <arg name="paused" default="true"/>
+  <arg name="use_sim_time" default="true"/>
+  
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+  </include>
+  
+  <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 base_link base_footprint 40" />
+  
+  <include file="$(find innfos_joint_description)/launch/innfos_joint_upload.launch" ns="innfos" />
+  
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-file $(find innfos_joint_description)/urdf/innfos_joint.urdf -urdf -model innfos_joint"/>
+        
+  <!-- <node name="fake_joint_calibration"
+        pkg="rostopic"
+        type="rostopic"
+        args="pub /calibrated std_msgs/Bool true" /> -->
+</launch>

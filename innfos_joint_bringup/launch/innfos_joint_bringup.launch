@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="zero_position" default="0.174532925"/>
+
+  <!-- Start the Hardware -->
+  <include file="$(find innfos_joint_hardware)/launch/innfos_joint_hardware.launch">
+    <arg name="zero_position" value="$(arg zero_position)"/>
+  </include>
+
+  <!-- Upload the robot description -->
+  <include file="$(find innfos_joint_description)/launch/innfos_joint_upload.launch" ns="innfos" />
+
+  <!-- Start the RVIZ -->
+  <include file="$(find innfos_joint_description)/launch/innfos_joint_rviz.launch" />
+
+  <!-- Start the controllers -->
+  <include file="$(find innfos_joint_controllers)/launch/innfos_joint_controllers.launch" />
+
+</launch>

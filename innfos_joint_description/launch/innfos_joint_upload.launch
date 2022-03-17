@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <param name="robot_description" textfile="$(find innfos_joint_description)/urdf/innfos_joint.urdf" />
+  
+</launch>

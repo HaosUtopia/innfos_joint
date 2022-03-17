@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="zero_position" default="0.174532925"/>
+  <param name="innfos/zero_position" type="double" value="$(arg zero_position)"/>
+
+  <node name="innfos_joint_hardware" pkg="innfos_joint_hardware" type="innfos_joint_hardware" output="screen"/>
+
+</launch>

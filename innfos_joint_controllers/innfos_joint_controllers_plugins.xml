@@ -1,0 +1,25 @@
+<library path="lib/libeffort_state_controller">
+
+  <class
+  name="innfos_joint_controllers/EffortStateController"
+  type="innfos_joint_controllers::EffortStateController"
+  base_class_type="controller_interface::ControllerBase">
+    <description>
+      The EffortStateController controls the state(position/velocity/effort) of innfos joint by effort.
+    </description>
+  </class>
+
+</library>
+
+<library path="lib/libimpedance_controller">
+
+  <class
+  name="innfos_joint_controllers/ImpedanceController"
+  type="innfos_joint_controllers::ImpedanceController"
+  base_class_type="controller_interface::ControllerBase">
+    <description>
+      The ImpedanceController performs impedance control to innfos joint.
+    </description>
+  </class>
+
+</library>

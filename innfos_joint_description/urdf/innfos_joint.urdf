@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+     
+<robot
+  name="innfos_joint">
+  <gazebo>
+    <plugin name="gazebo_ros_control"
+            filename="libgazebo_ros_control.so">
+      <robotNamespace>/innfos</robotNamespace>
+    </plugin>
+  </gazebo>
+  <link 
+    name="dummy">
+  </link>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0024174 1.0534E-05 0.3362"
+        rpy="0 0 0" />
+      <mass
+        value="9.658" />
+      <inertia
+        ixx="0.27142"
+        ixy="5.7115E-12"
+        ixz="-4.0203E-05"
+        iyy="0.27157"
+        iyz="-1.3648E-08"
+        izz="0.023627" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://innfos_joint_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://innfos_joint_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="dummy_joint"
+    type="fixed">
+    <parent
+      link="dummy"/>
+    <child
+      link="base_link"/>
+  </joint>
+  <link
+    name="joint1_Link">
+    <inertial>
+      <origin
+        xyz="0.2577 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.56829" />
+      <inertia
+        ixx="0.00010522"
+        ixy="0"
+        ixz="0"
+        iyy="0.0021691"
+        iyz="0"
+        izz="0.0022076" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -1.57 0" />
+      <geometry>
+        <mesh
+          filename="package://innfos_joint_description/meshes/joint1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://innfos_joint_description/meshes/joint1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="innfos_joint"
+    type="revolute">
+    <origin
+      xyz="0.1205 0 0.6835"
+      rpy="3.14 -1.57 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="joint1_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-10"
+      upper="10"
+      effort="5"
+      velocity="1.2" />
+  </joint>
+  <transmission name="innfos_joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="innfos_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="innfos_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+</robot>
